@@ -24,6 +24,15 @@
         "hook": {
             "providers": [
                 "VoyagerRelationSelector\\VoyagerRelationSelectorServiceProvider"
+            ],
+            "migrations":[
+                "database/migrations"
+            ],
+            "seeders":[
+                "database/seeds/RegionTableSeeder.php"
+            ],
+            "unseeders":[
+                "database/seeds/UnRegionTableSeeder.php"
             ]
         }
     }

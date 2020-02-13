@@ -10,7 +10,7 @@ class RegionTableSeeder extends Seeder
         if($exist>0){
             return false;
         }
-        $data = file_get_contents('./region.json');
+        $data = file_get_contents(__DIR__.'/region.json');
         $data = json_decode($data, true);
         DB::table('regions')->insert($data);
     }
