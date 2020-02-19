@@ -1,6 +1,6 @@
 <?php
 
-namespace VoyagerRelationSelector;
+namespace VoyagerRelationSelector\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

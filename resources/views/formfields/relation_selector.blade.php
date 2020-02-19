@@ -7,21 +7,11 @@
        placeholder="{{ isset($options->placeholder)? old($row->field, $options->placeholder): $row->display_name }}"
        value="@if(isset($dataTypeContent->{$row->field})){{ old($row->field, $dataTypeContent->{$row->field}) }}@else{{old($row->field)}}@endif" 
 /> --}}
-
-<div class="form-group">
-    <div class="col-md-4">
-        <select class="form-control">
-            <option >山东</option>
-        </select>
-    </div>
-    <div class="col-md-4">
-        <select class="form-control">
-            <option >青岛</option>
-        </select>
-    </div>
-    <div class="col-md-4">
-        <select class="form-control">
-            <option >李沧区</option>
-        </select>
-    </div>
+<div id="relation_selector_{{$row->id}}" >
+    <relation-selector :level="3" v-model="value" ></relation-selector>
+    <input type="hidden" name="{{ $row->field }}"  :value="value_level_0" />
+    @foreach($options->relation as $key=>$item)
+        <input type="hidden" name="{{ $item }}"  :value="value_level_{{$key+1}}" />
+    @endforeach
 </div>
+

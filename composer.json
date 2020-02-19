@@ -33,7 +33,10 @@
             ],
             "unseeders":[
                 "database/seeds/UnRegionTableSeeder.php"
-            ]
+            ],
+            "assets":{
+                "public":"public/vendor/voyager-relation-selector"
+            }
         }
     }
 }
