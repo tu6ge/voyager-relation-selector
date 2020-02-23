@@ -16,6 +16,12 @@ new Vue({
         value_level_2:function(){
             return this.value[2] || 0;
         },
+        value_level_3:function(){
+            return this.value[3] || 0;
+        },
+        value_level_4:function(){
+            return this.value[4] || 0;
+        },
     },
     methods: {
     }

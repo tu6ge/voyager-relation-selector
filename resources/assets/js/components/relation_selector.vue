@@ -23,31 +23,17 @@ export default {
             default:function(){
                 return [];
             },
+        },
+        resources_url:{
+            type: String,
+            required: true,
+            validator: function (value) {
+                return value.match('__pid__') != null
+            }
         }
     },
     data:function(){
-        let that = this
-        return { 
-            //value:[220, 250, 254],
-            props_data: {
-                lazy: true,
-                lazyLoad (node, resolve) {
-                    const { level ,value } = node;
-                    let val  = value ? value: 0
-                    axios.get('/vrs/region/'+val)
-                        .then(res=>{
-                            if(res.status!= 200){
-                                return false
-                            }
-                            const nodes = res.data.map(item=>({
-                                value:item.id,
-                                label:item.name,
-                                leaf: item.level >= that.level
-                            }))
-                            resolve(nodes);
-                        });
-                }
-            }
+        return {
         };
     },
     components: {
@@ -56,6 +42,26 @@ export default {
     methods:{
         handleChange(val){
             this.$emit('input', val);
+        }
+    },
+    computed:{
+        props_data(){
+            let resources_url = this.resources_url
+            return {
+                lazy: true,
+                lazyLoad (node, resolve) {
+                    const { level ,value } = node;
+                    let val  = value ? value: 0
+                    
+                    axios.get(resources_url.replace('__pid__', val))
+                        .then(res=>{
+                            if(res.status!= 200){
+                                return false
+                            }
+                            resolve(res.data);
+                        });
+                }
+            }
         }
     }
 }

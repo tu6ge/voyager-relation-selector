@@ -1,6 +1,6 @@
 <?php 
 /**
- * 级联选择器
+ * 省市区选择器
  */
 namespace VoyagerRelationSelector\FormFields;
 
@@ -8,20 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\FormFields\AbstractHandler;
 use VoyagerRelationSelector\Exceptions\RelationSelectorException;
 use VoyagerRelationSelector\Toolkit;
+use VoyagerRelationSelector\Models\Region;
 
-class RelationSelector extends AbstractHandler
+class RegionSelector extends AbstractHandler
 {
-    protected $name = 'Relation Selector';
-    protected $codename = 'relation-selector';
+    protected $name = 'Region Selector';
+    protected $codename = 'region-selector';
 
     public function createContent($row, $dataType, $dataTypeContent, $options)
     {
-        if(empty($options->relation) && empty($options->model)){
-            throw new RelationSelectorException('relation and model is not found');
-        }
-
         if(empty($options->resources_url)){
-            throw new RelationSelectorException('option resources_url is not found');
+            $options->resources_url = '/vrs/region/__pid__';
         }
         
         if(!empty($options->relation)){
@@ -29,7 +26,7 @@ class RelationSelector extends AbstractHandler
         }elseif($options->level){
             $level = $options->level;
         }else{
-            throw new RelationSelectorException('option level is not found');
+            $level = 3;
         }
 
         $value = [];
@@ -43,18 +40,8 @@ class RelationSelector extends AbstractHandler
                 }
                 $value[] = $dataTypeContent->{$row->field};
             }else{
-                if(!class_exists($options->model)){
-                    throw new RelationSelectorException(sprintf('options model : %s is not a class', $options->model));
-                }
 
-                $model = new $options->model;
-                if(!($model instanceof Model)){
-                    throw new RelationSelectorException(sprintf('options model : %s is not instance of Illuminate\Database\Eloquent\Model', $options->model));
-                }
-
-                if(!method_exists($model, 'getParents')){
-                    throw new RelationSelectorException(sprintf('options model : %s have not getParents method', $options->model));
-                }
+                $model = new Region;
 
                 $value = $model->getParents($dataTypeContent->{$row->field});
             }
