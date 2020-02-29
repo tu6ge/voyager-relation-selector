@@ -35,7 +35,8 @@
                 "database/seeds/UnRegionTableSeeder.php"
             ],
             "assets":{
-                "public":"public/vendor/voyager-relation-selector"
+                "public":"public/vendor/voyager-relation-selector",
+                "fonts/vendor":"public/fonts/vendor"
             }
         }
     }

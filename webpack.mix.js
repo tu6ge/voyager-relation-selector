@@ -13,6 +13,8 @@ const mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js');
 
+//mix.extract();
+
 //mix.config.fileLoaderDirs.fonts = 'assets/fonts';
 
 

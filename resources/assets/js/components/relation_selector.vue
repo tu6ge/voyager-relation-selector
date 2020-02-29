@@ -7,8 +7,8 @@
 </template>
 <script>
 import { Cascader } from 'element-ui';
-// import 'element-ui/lib/theme-chalk/cascader.css'
-// import 'element-ui/lib/theme-chalk/icon.css'
+import 'element-ui/lib/theme-chalk/cascader.css'
+import 'element-ui/lib/theme-chalk/icon.css'
 const axios = require('axios');
 
 export default {

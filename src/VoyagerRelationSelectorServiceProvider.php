@@ -33,7 +33,7 @@ class VoyagerRelationSelectorServiceProvider extends ServiceProvider
     }
     protected function additional_css_js()
     {
-        Toolkit::append_css('https://unpkg.com/element-ui/lib/theme-chalk/index.css');
+        //Toolkit::append_css('https://unpkg.com/element-ui/lib/theme-chalk/index.css');
 
         Toolkit::append_js('vendor/voyager-relation-selector/js/app.js');
     }
