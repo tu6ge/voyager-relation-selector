@@ -25,7 +25,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "VoyagerRelationSelector\\Tests\\": "tests/"
+            "VoyagerRelationSelector\\Tests\\": "tests/",
+            "App\\": "tests/App/"
         }
     },
     "extra": {

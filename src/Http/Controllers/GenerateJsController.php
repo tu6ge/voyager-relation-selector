@@ -10,7 +10,7 @@ class GenerateJsController extends Controller
     public function index(Request $request)
     {
         $id = $request->get('id', 0);
-        $value = $request->get('value', '[]');
+        $value = $request->get('value', '');
 
         if (!empty($value)) {
             $value = explode(',', $value);
@@ -23,7 +23,7 @@ class GenerateJsController extends Controller
         }
 
         return response()->view('vrs::generate-js.index', [
-            'id'        => $id,
+            'id'            => $id,
             'value'     => $value,
         ], 200, [
             'Content-Type' => 'text/javascript',
