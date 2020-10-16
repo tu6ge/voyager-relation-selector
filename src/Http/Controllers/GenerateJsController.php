@@ -2,9 +2,8 @@
 
 namespace VoyagerRelationSelector\Http\Controllers;
 
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
-use TCG\Voyager\Models\DataRow;
+use Illuminate\Routing\Controller;
 
 class GenerateJsController extends Controller
 {
@@ -12,20 +11,20 @@ class GenerateJsController extends Controller
     {
         $id = $request->get('id', 0);
         $value = $request->get('value', '[]');
-        
-        if(!empty($value)){
+
+        if (!empty($value)) {
             $value = explode(',', $value);
-            $value = collect($value)->map(function($res){
+            $value = collect($value)->map(function ($res) {
                 return intval($res);
             });
             $value = $value->toJson();
-        }else{
+        } else {
             $value = '[]';
         }
-        
+
         return response()->view('vrs::generate-js.index', [
-            'id'                        => $id,
-            'value'                 => $value,
+            'id'        => $id,
+            'value'     => $value,
         ], 200, [
             'Content-Type' => 'text/javascript',
         ]);

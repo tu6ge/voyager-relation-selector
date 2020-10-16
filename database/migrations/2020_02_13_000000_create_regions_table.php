@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateRegionsTable extends Migration
 {
-     /**
+    /**
      * Run the migrations.
      *
      * @return void
