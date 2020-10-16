@@ -3,8 +3,8 @@
 namespace VoyagerRelationSelector;
 
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
+use Illuminate\Support\ServiceProvider;
 use TCG\Voyager\Facades\Voyager;
 use VoyagerRelationSelector\FormFields\RegionSelector;
 use VoyagerRelationSelector\FormFields\RelationSelector;
@@ -17,7 +17,7 @@ class VoyagerRelationSelectorServiceProvider extends ServiceProvider
         Voyager::addFormField(RegionSelector::class);
 
         Voyager::addFormField(RelationSelector::class);
-        
+
         Voyager::addFormField(RelationSelectorParent::class);
     }
 
@@ -31,6 +31,7 @@ class VoyagerRelationSelectorServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'vrs');
     }
+
     protected function additional_css_js()
     {
         Toolkit::append_css('https://unpkg.com/element-ui/lib/theme-chalk/index.css');

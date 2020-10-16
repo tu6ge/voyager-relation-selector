@@ -7,7 +7,7 @@ class RegionTableSeeder extends Seeder
     public function run()
     {
         $exist = DB::table('regions')->count();
-        if($exist>0){
+        if ($exist > 0) {
             return false;
         }
         $data = file_get_contents(__DIR__.'/region.json');

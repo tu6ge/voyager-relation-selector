@@ -1,4 +1,5 @@
 <?php
+
 namespace VoyagerRelationSelector;
 
 class Toolkit

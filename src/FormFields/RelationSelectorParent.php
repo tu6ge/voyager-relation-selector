@@ -3,7 +3,6 @@
 namespace VoyagerRelationSelector\FormFields;
 
 use TCG\Voyager\FormFields\AbstractHandler;
-use VoyagerRelationSelector\Toolkit;
 
 class RelationSelectorParent extends AbstractHandler
 {

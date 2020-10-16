@@ -1,12 +1,12 @@
 <?php
 /**
- * 省市区选择器
+ * 省市区选择器.
  */
 namespace VoyagerRelationSelector\FormFields;
 
 use TCG\Voyager\FormFields\AbstractHandler;
-use VoyagerRelationSelector\Toolkit;
 use VoyagerRelationSelector\Models\Region;
+use VoyagerRelationSelector\Toolkit;
 
 class RegionSelector extends AbstractHandler
 {
@@ -37,7 +37,7 @@ class RegionSelector extends AbstractHandler
                 }
                 $value[] = $dataTypeContent->{$row->field};
             } else {
-                $model = new Region;
+                $model = new Region();
 
                 $value = $model->getParents($dataTypeContent->{$row->field});
             }
@@ -46,11 +46,11 @@ class RegionSelector extends AbstractHandler
         Toolkit::append_js(sprintf('vrs/main.js?id=%s&value=%s', $row->id, implode(',', $value)));
 
         return view('voyager_relation_selector::formfields.relation_selector', [
-            'row' => $row,
-            'options' => $options,
-            'dataType' => $dataType,
-            'dataTypeContent' => $dataTypeContent,
-            'level' => $level,
+            'row'               => $row,
+            'options'           => $options,
+            'dataType'          => $dataType,
+            'dataTypeContent'   => $dataTypeContent,
+            'level'             => $level,
         ]);
     }
 }

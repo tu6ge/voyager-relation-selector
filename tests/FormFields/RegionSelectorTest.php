@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ZHIYUAN
- * Date: 2020-10-16
- * Time: 15:54
- */
 namespace VoyagerRelationSelector\Tests\FormFields;
 
-use Illuminate\Testing\TestResponse;
 use PHPUnit\Framework\TestCase;
 use TCG\Voyager\FormFields\HandlerInterface;
 use VoyagerRelationSelector\FormFields\RegionSelector;

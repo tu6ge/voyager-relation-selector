@@ -1,6 +1,6 @@
 <?php
 /**
- * 级联选择器
+ * 级联选择器.
  */
 namespace VoyagerRelationSelector\FormFields;
 
@@ -23,7 +23,7 @@ class RelationSelector extends AbstractHandler
         if (empty($options->resources_url)) {
             throw new RelationSelectorException('option resources_url is not found');
         }
-        
+
         if (!empty($options->relation)) {
             $level = count($options->relation) + 1;
         } elseif ($options->level) {
@@ -46,7 +46,7 @@ class RelationSelector extends AbstractHandler
                     throw new RelationSelectorException(sprintf('options model : %s is not a class', $options->model));
                 }
 
-                $model = new $options->model;
+                $model = new $options->model();
                 if (!($model instanceof Model)) {
                     throw new RelationSelectorException(sprintf('options model : %s is not instance of Illuminate\Database\Eloquent\Model', $options->model));
                 }
@@ -62,11 +62,11 @@ class RelationSelector extends AbstractHandler
         Toolkit::append_js(sprintf('vrs/main.js?id=%s&value=%s', $row->id, implode(',', $value)));
 
         return view('voyager_relation_selector::formfields.relation_selector', [
-            'row' => $row,
-            'options' => $options,
-            'dataType' => $dataType,
-            'dataTypeContent' => $dataTypeContent,
-            'level' => $level,
+            'row'               => $row,
+            'options'           => $options,
+            'dataType'          => $dataType,
+            'dataTypeContent'   => $dataTypeContent,
+            'level'             => $level,
         ]);
     }
 }
