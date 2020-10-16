@@ -4,7 +4,6 @@ namespace VoyagerRelationSelector\Tests;
 
 class ServiceProviderTest extends TestCase
 {
-
     /**
      * todo update.
      */

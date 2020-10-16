@@ -8,7 +8,6 @@ use VoyagerRelationSelector\Tests\TestCase;
 
 class GenerateJsControllerTest extends TestCase
 {
-
     public function testIndex()
     {
         $controller = $this->app->make(GenerateJsController::class);
