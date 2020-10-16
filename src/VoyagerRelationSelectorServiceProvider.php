@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace VoyagerRelationSelector;
 
@@ -37,6 +37,4 @@ class VoyagerRelationSelectorServiceProvider extends ServiceProvider
 
         Toolkit::append_js('vendor/voyager-relation-selector/js/app.js');
     }
-
-
 }

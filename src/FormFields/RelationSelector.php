@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * 级联选择器
  */
@@ -16,43 +16,42 @@ class RelationSelector extends AbstractHandler
 
     public function createContent($row, $dataType, $dataTypeContent, $options)
     {
-        if(empty($options->relation) && empty($options->model)){
+        if (empty($options->relation) && empty($options->model)) {
             throw new RelationSelectorException('relation and model is not found');
         }
 
-        if(empty($options->resources_url)){
+        if (empty($options->resources_url)) {
             throw new RelationSelectorException('option resources_url is not found');
         }
         
-        if(!empty($options->relation)){
+        if (!empty($options->relation)) {
             $level = count($options->relation) + 1;
-        }elseif($options->level){
+        } elseif ($options->level) {
             $level = $options->level;
-        }else{
+        } else {
             throw new RelationSelectorException('option level is not found');
         }
 
         $value = [];
-        if($dataTypeContent->exists){
-            
-            if(!empty($options->relation)){
-                foreach($options->relation as $key=>$val){
-                    if(isset($dataTypeContent->{$val})){
+        if ($dataTypeContent->exists) {
+            if (!empty($options->relation)) {
+                foreach ($options->relation as $key=>$val) {
+                    if (isset($dataTypeContent->{$val})) {
                         $value[] = $dataTypeContent->{$val};
                     }
                 }
                 $value[] = $dataTypeContent->{$row->field};
-            }else{
-                if(!class_exists($options->model)){
+            } else {
+                if (!class_exists($options->model)) {
                     throw new RelationSelectorException(sprintf('options model : %s is not a class', $options->model));
                 }
 
                 $model = new $options->model;
-                if(!($model instanceof Model)){
+                if (!($model instanceof Model)) {
                     throw new RelationSelectorException(sprintf('options model : %s is not instance of Illuminate\Database\Eloquent\Model', $options->model));
                 }
 
-                if(!method_exists($model, 'getParents')){
+                if (!method_exists($model, 'getParents')) {
                     throw new RelationSelectorException(sprintf('options model : %s have not getParents method', $options->model));
                 }
 

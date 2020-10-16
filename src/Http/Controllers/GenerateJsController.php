@@ -13,13 +13,13 @@ class GenerateJsController extends Controller
         $id = $request->get('id', 0);
         $value = $request->get('value', '[]');
         
-        if(!empty($value)){
+        if (!empty($value)) {
             $value = explode(',', $value);
-            $value = collect($value)->map(function($res){
+            $value = collect($value)->map(function ($res) {
                 return intval($res);
             });
             $value = $value->toJson();
-        }else{
+        } else {
             $value = '[]';
         }
         
