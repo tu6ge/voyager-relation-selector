@@ -23,8 +23,8 @@ class GenerateJsController extends Controller
         }
 
         return response()->view('vrs::generate-js.index', [
-            'id'                => $id,
-            'value'         => $value,
+            'id'       	   => $id,
+            'value'        => $value,
         ], 200, [
             'Content-Type' => 'text/javascript',
         ]);

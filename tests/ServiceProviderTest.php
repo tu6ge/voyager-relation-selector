@@ -10,6 +10,6 @@ class ServiceProviderTest extends TestCase
      */
     public function testRegister()
     {
-        $this->assertEquals('a',  'a');
+        $this->assertEquals('a', 'a');
     }
 }
