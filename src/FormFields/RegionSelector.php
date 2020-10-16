@@ -2,6 +2,7 @@
 /**
  * 省市区选择器.
  */
+
 namespace VoyagerRelationSelector\FormFields;
 
 use TCG\Voyager\FormFields\AbstractHandler;
@@ -18,7 +19,7 @@ class RegionSelector extends AbstractHandler
         if (empty($options->resources_url)) {
             $options->resources_url = '/vrs/region/__pid__';
         }
-        
+
         if (!empty($options->relation)) {
             $level = count($options->relation) + 1;
         } elseif ($options->level) {

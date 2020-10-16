@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use VoyagerRelationSelector\Models\Region;
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace VoyagerRelationSelector\Tests;
 
 use Illuminate\Support\Facades\Config;

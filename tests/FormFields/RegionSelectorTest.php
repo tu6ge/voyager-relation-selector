@@ -1,4 +1,5 @@
 <?php
+
 namespace VoyagerRelationSelector\Tests\FormFields;
 
 use PHPUnit\Framework\TestCase;
