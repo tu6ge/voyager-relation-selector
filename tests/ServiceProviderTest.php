@@ -6,10 +6,10 @@ class ServiceProviderTest extends TestCase
 {
 
     /**
-     * todo update
+     * todo update.
      */
     public function testRegister()
     {
-        $this->assertEquals( 'a', 'a');
+        $this->assertEquals('a',  'a');
     }
 }

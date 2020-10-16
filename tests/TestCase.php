@@ -2,7 +2,7 @@
 
 namespace VoyagerRelationSelector\Tests;
 
-use Orchestra\Testbench\TestCase as TestbenchTestCase;;
+use Orchestra\Testbench\TestCase as TestbenchTestCase;
 
 class TestCase extends TestbenchTestCase
 {
