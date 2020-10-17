@@ -22,7 +22,7 @@ class RelationModelTest extends DatabaseTestCase
             'id'                => 55,
             'test_parent_id'    => 34,
         ]);
-        ()
+
         $this->assertEquals([34, 55], (new FooHasParent())->getParents(55));
 
         DB::table('foo')->insert([
