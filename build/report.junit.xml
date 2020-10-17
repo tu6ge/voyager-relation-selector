@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="6" assertions="20" errors="0" warnings="0" failures="0" skipped="0" time="0.093676">
+    <testsuite name="Voyager Test Suite" tests="6" assertions="20" errors="0" warnings="0" failures="0" skipped="0" time="0.093676">
+      <testsuite name="VoyagerRelationSelector\Tests\FormFields\RegionSelectorTest" file="/home/tu6ge/php/voyager-select-relation/tests/FormFields/RegionSelectorTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.002292">
+        <testcase name="testInstanceof" class="VoyagerRelationSelector\Tests\FormFields\RegionSelectorTest" classname="VoyagerRelationSelector.Tests.FormFields.RegionSelectorTest" file="/home/tu6ge/php/voyager-select-relation/tests/FormFields/RegionSelectorTest.php" line="11" assertions="1" time="0.002292"/>
+      </testsuite>
+      <testsuite name="VoyagerRelationSelector\Tests\Http\Controllers\GenerateJsControllerTest" file="/home/tu6ge/php/voyager-select-relation/tests/Http/Controllers/GenerateJsControllerTest.php" tests="1" assertions="9" errors="0" warnings="0" failures="0" skipped="0" time="0.052100">
+        <testcase name="testIndex" class="VoyagerRelationSelector\Tests\Http\Controllers\GenerateJsControllerTest" classname="VoyagerRelationSelector.Tests.Http.Controllers.GenerateJsControllerTest" file="/home/tu6ge/php/voyager-select-relation/tests/Http/Controllers/GenerateJsControllerTest.php" line="11" assertions="9" time="0.052100"/>
+      </testsuite>
+      <testsuite name="VoyagerRelationSelector\Tests\ServiceProviderTest" file="/home/tu6ge/php/voyager-select-relation/tests/ServiceProviderTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.003721">
+        <testcase name="testRegister" class="VoyagerRelationSelector\Tests\ServiceProviderTest" classname="VoyagerRelationSelector.Tests.ServiceProviderTest" file="/home/tu6ge/php/voyager-select-relation/tests/ServiceProviderTest.php" line="10" assertions="1" time="0.003721"/>
+      </testsuite>
+      <testsuite name="VoyagerRelationSelector\Tests\ToolkitTest" file="/home/tu6ge/php/voyager-select-relation/tests/ToolkitTest.php" tests="2" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.003772">
+        <testcase name="test_append_js" class="VoyagerRelationSelector\Tests\ToolkitTest" classname="VoyagerRelationSelector.Tests.ToolkitTest" file="/home/tu6ge/php/voyager-select-relation/tests/ToolkitTest.php" line="11" assertions="3" time="0.002131"/>
+        <testcase name="test_append_css" class="VoyagerRelationSelector\Tests\ToolkitTest" classname="VoyagerRelationSelector.Tests.ToolkitTest" file="/home/tu6ge/php/voyager-select-relation/tests/ToolkitTest.php" line="26" assertions="3" time="0.001640"/>
+      </testsuite>
+      <testsuite name="VoyagerSelectRelation\Tests\Traits\RelationModelTest" file="/home/tu6ge/php/voyager-select-relation/tests/Traits/RelationModelTest.php" tests="1" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.031792">
+        <testcase name="testGetParents" class="VoyagerSelectRelation\Tests\Traits\RelationModelTest" classname="VoyagerSelectRelation.Tests.Traits.RelationModelTest" file="/home/tu6ge/php/voyager-select-relation/tests/Traits/RelationModelTest.php" line="13" assertions="3" time="0.031792"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

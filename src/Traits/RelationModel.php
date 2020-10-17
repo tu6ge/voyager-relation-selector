@@ -7,6 +7,7 @@ trait RelationModel
     public function getParents($id)
     {
         if (!isset($this->parentKey)) {
+            // todo update throw
             $this->parentKey = 'parent_id';
         }
 
