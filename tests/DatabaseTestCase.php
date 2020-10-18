@@ -2,13 +2,21 @@
 
 namespace VoyagerRelationSelector\Tests;
 
-use Orchestra\Testbench\TestCase;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseTestCase extends TestCase
 {
     public function setUp(): void
     {
         parent::setUp();
+
+        $this->loadLaravelMigrations();
+
+        $this->loadMigrationsFrom('./vendor/tcg/voyager/migrations');
+
+        $this->seed(\VoyagerDatabaseSeeder::class);
+
+        $this->loadMigrationsFrom('./database/migrations');
 
         $this->loadMigrationsFrom(__DIR__.'/database/migrations/');
     }
@@ -29,5 +37,10 @@ class DatabaseTestCase extends TestCase
             'database' => ':memory:',
             'prefix'   => '',
         ]);
+    }
+
+    public function tearDown(): void
+    {
+        DB::table('foo')->whereRaw(1)->delete();
     }
 }

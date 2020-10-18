@@ -27,7 +27,11 @@
         "psr-4": {
             "VoyagerRelationSelector\\Tests\\": "tests/",
             "App\\": "tests/App/"
-        }
+        },
+        "classmap": [
+            "vendor/tcg/voyager/publishable/database/dummy_seeds",
+            "vendor/tcg/voyager/publishable/database/seeds"
+        ]
     },
     "extra": {
         "hook": {
