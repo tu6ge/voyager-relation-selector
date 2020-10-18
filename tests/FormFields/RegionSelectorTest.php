@@ -2,6 +2,7 @@
 
 namespace VoyagerRelationSelector\Tests\FormFields;
 
+use Illuminate\Testing\TestResponse;
 use ReflectionMethod;
 use TCG\Voyager\FormFields\HandlerInterface;
 use VoyagerRelationSelector\FormFields\RegionSelector;
@@ -27,10 +28,19 @@ class RegionSelectorTest extends DatabaseTestCase
      */
     public function testCreateContentView()
     {
-        $this->assertDatabaseHas('data_types', ['name'=> 'users']);
 //        $row = new \stdClass();
-//        $row->
-//        $response = app(RegionSelector::class)->createContent();
+//        $dataTypeContent = new \stdClass();
+//        $options = new \stdClass();
+//
+//        $row->id = 22;
+//        $dataTypeContent->exists = false;
+//
+//        $response = app(RegionSelector::class)->createContent($row, $dataType = 'bar', $dataTypeContent, $options);
+//        $testResponse = new TestResponse($response);
+//
+//        $view_options = new \stdClass();
+//        $view_options->resources_url = '/vrs/region/__pid__';
+//        $testResponse->assertViewHas('options', $view_options);
     }
 
     public function testGetLevel()
