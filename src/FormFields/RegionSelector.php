@@ -30,7 +30,7 @@ class RegionSelector extends AbstractHandler
         $level = $this->getLevel($options);
 
         $values = $this->getActiveValues($row, $dataTypeContent, $options);
-        
+
         Toolkit::append_js(sprintf('vrs/main.js?id=%s&value=%s', $row->id, implode(',', $values)));
 
         return view('voyager_relation_selector::formfields.relation_selector', [

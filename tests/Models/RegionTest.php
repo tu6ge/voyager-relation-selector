@@ -29,10 +29,10 @@ class RegionTest extends TestCase
     {
         $reflect = new ReflectionClass(Region::class);
 
-        $protected = $reflect->getProperties(\ReflectionProperty::IS_PROTECTED);
+        $protected = $reflect->getProperties(ReflectionProperty::IS_PROTECTED);
 
         $collect = collect($protected)->filter(function ($item) {
-            return $item->name =='parentKey';
+            return $item->name == 'parentKey';
         });
 
         $this->assertEquals(1, $collect->count());
