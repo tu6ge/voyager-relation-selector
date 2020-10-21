@@ -23,9 +23,6 @@ class RegionSelectorTest extends DatabaseTestCase
         $this->assertEquals(true, app(RegionSelector::class) instanceof HandlerInterface);
     }
 
-    /**
-     * todo.
-     */
     public function testCreateContentView()
     {
         $row = new \stdClass();
@@ -36,7 +33,7 @@ class RegionSelectorTest extends DatabaseTestCase
         $row->field = 'test_field_name';
         $dataTypeContent->exists = false;
 
-        $mock = \Mockery::mock(RegionSelector::class . '[getLevel, getActiveValues]', [new Region()]);
+        $mock = \Mockery::mock(RegionSelector::class.'[getLevel, getActiveValues]', [new Region()]);
         $mock->shouldAllowMockingProtectedMethods();
         $mock->shouldReceive('getLevel')->andReturn(2);
         $mock->shouldReceive('getActiveValues')->andReturn([23, 57]);
@@ -69,7 +66,7 @@ class RegionSelectorTest extends DatabaseTestCase
         $testResponse->assertViewHas('options', $view_options);
 
         $this->assertEquals(config('voyager.additional_js'), [
-            'vrs/main.js?id=22&value=23,57'
+            'vrs/main.js?id=22&value=23,57',
         ]);
     }
 
