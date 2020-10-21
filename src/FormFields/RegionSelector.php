@@ -33,7 +33,7 @@ class RegionSelector extends AbstractHandler
 
         Toolkit::append_js(sprintf('vrs/main.js?id=%s&value=%s', $row->id, implode(',', $values)));
 
-        return view('voyager_relation_selector::formfields.relation_selector', [
+        return response()->view('vrs::formfields.relation_selector', [
             'row'               => $row,
             'options'           => $options,
             'dataType'          => $dataType,

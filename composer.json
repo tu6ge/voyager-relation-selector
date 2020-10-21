@@ -16,7 +16,8 @@
         "phpunit/phpunit": "^9.4",
         "laravel/framework": "^7",
         "tcg/voyager": "^1.4",
-        "orchestra/testbench": "^5"
+        "orchestra/testbench": "^5",
+        "orchestra/testbench-browser-kit": "^5"
     },
     "autoload": {
         "psr-4": {

@@ -20,4 +20,9 @@ class TestCase extends TestbenchTestCase
             'VoyagerRelationSelector\VoyagerRelationSelectorServiceProvider',
         ];
     }
+
+    protected function getEnvironmentSetUp($app)
+    {
+        $app->instance('path.resources', dirname(__FILE__). '/../resources');
+    }
 }

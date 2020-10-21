@@ -28,19 +28,49 @@ class RegionSelectorTest extends DatabaseTestCase
      */
     public function testCreateContentView()
     {
-//        $row = new \stdClass();
-//        $dataTypeContent = new \stdClass();
-//        $options = new \stdClass();
-//
-//        $row->id = 22;
-//        $dataTypeContent->exists = false;
-//
-//        $response = app(RegionSelector::class)->createContent($row, $dataType = 'bar', $dataTypeContent, $options);
-//        $testResponse = new TestResponse($response);
-//
-//        $view_options = new \stdClass();
-//        $view_options->resources_url = '/vrs/region/__pid__';
-//        $testResponse->assertViewHas('options', $view_options);
+        $row = new \stdClass();
+        $dataTypeContent = new \stdClass();
+        $options = new \stdClass();
+
+        $row->id = 22;
+        $row->field = 'test_field_name';
+        $dataTypeContent->exists = false;
+
+        $mock = \Mockery::mock(RegionSelector::class . '[getLevel, getActiveValues]', [new Region()]);
+        $mock->shouldAllowMockingProtectedMethods();
+        $mock->shouldReceive('getLevel')->andReturn(2);
+        $mock->shouldReceive('getActiveValues')->andReturn([23, 57]);
+
+        $response = $mock->createContent($row, $dataType = 'bar', $dataTypeContent, $options);
+
+        $testResponse = new TestResponse($response);
+        $testResponse->assertViewIs('vrs::formfields.relation_selector');
+        $view_options = new \stdClass();
+        $view_options->resources_url = '/vrs/region/__pid__';
+        $testResponse->assertViewHas('options', $view_options);
+        $testResponse->assertViewHas('level', 2);
+
+        $row = new \stdClass();
+        $dataTypeContent = new \stdClass();
+        $options = new \stdClass();
+
+        $row->id = 22;
+        $row->field = 'test_field_name';
+        $dataTypeContent->exists = false;
+        $options->resources_url = 'foo';
+
+        config(['voyager.additional_js'=> []]);
+
+        $response = $mock->createContent($row, $dataType = 'bar', $dataTypeContent, $options);
+
+        $testResponse = new TestResponse($response);
+        $view_options = new \stdClass();
+        $view_options->resources_url = 'foo';
+        $testResponse->assertViewHas('options', $view_options);
+
+        $this->assertEquals(config('voyager.additional_js'), [
+            'vrs/main.js?id=22&value=23,57'
+        ]);
     }
 
     public function testGetLevel()
