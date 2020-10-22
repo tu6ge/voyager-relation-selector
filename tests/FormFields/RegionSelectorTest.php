@@ -2,8 +2,6 @@
 
 namespace VoyagerRelationSelector\Tests\FormFields;
 
-use Illuminate\Http\Response;
-use Illuminate\Testing\TestResponse;
 use ReflectionMethod;
 use TCG\Voyager\FormFields\HandlerInterface;
 use VoyagerRelationSelector\FormFields\RegionSelector;
