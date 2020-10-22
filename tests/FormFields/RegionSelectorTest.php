@@ -38,7 +38,6 @@ class RegionSelectorTest extends DatabaseTestCase
         $mock->shouldReceive('getActiveValues')->andReturn([23, 57]);
 
         $response = $mock->createContent($row, $dataType = 'bar', $dataTypeContent, $options);
-        
         $this->assertStringContainsString('resources_url="/vrs/region/__pid__"', $response->render());
 
         $row = new \stdClass();
