@@ -2,6 +2,7 @@
 
 namespace VoyagerRelationSelector\Tests\FormFields;
 
+use Illuminate\Http\Response;
 use Illuminate\Testing\TestResponse;
 use ReflectionMethod;
 use TCG\Voyager\FormFields\HandlerInterface;
@@ -39,13 +40,8 @@ class RegionSelectorTest extends DatabaseTestCase
         $mock->shouldReceive('getActiveValues')->andReturn([23, 57]);
 
         $response = $mock->createContent($row, $dataType = 'bar', $dataTypeContent, $options);
-
-        $testResponse = new TestResponse($response);
-        $testResponse->assertViewIs('vrs::formfields.relation_selector');
-        $view_options = new \stdClass();
-        $view_options->resources_url = '/vrs/region/__pid__';
-        $testResponse->assertViewHas('options', $view_options);
-        $testResponse->assertViewHas('level', 2);
+        
+        $this->assertStringContainsString('resources_url="/vrs/region/__pid__"', $response->render());
 
         $row = new \stdClass();
         $dataTypeContent = new \stdClass();
@@ -59,12 +55,7 @@ class RegionSelectorTest extends DatabaseTestCase
         config(['voyager.additional_js'=> []]);
 
         $response = $mock->createContent($row, $dataType = 'bar', $dataTypeContent, $options);
-
-        $testResponse = new TestResponse($response);
-        $view_options = new \stdClass();
-        $view_options->resources_url = 'foo';
-        $testResponse->assertViewHas('options', $view_options);
-
+        $this->assertStringContainsString('resources_url="foo"', $response->render());
         $this->assertEquals(config('voyager.additional_js'), [
             'vrs/main.js?id=22&value=23,57',
         ]);
