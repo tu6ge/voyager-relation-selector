@@ -52,8 +52,9 @@ class RelationSelector extends AbstractHandler
      * @param $row
      * @param $dataTypeContent
      * @param $options
-     * @return array
      * @throws RelationSelectorException
+     *
+     * @return array
      */
     protected function getSelectedValue($row, $dataTypeContent, $options)
     {
@@ -83,7 +84,8 @@ class RelationSelector extends AbstractHandler
 
         if (!method_exists($model, 'getParents')) {
             throw new RelationSelectorException(
-                sprintf('options model : %s have not getParents method', $options->model));
+                sprintf('options model : %s have not getParents method', $options->model)
+            );
         }
 
         $value = $model->getParents($dataTypeContent->{$row->field});

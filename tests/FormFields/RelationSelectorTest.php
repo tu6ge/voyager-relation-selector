@@ -103,7 +103,7 @@ class RelationSelectorTest extends DatabaseTestCase
 
         $class->createContent($row, $dataType, $dataTypeContent, $options);
     }
-    
+
     public function testGetSelectedValue()
     {
         $fixture = new RelationSelector();
