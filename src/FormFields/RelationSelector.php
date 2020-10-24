@@ -27,38 +27,13 @@ class RelationSelector extends AbstractHandler
 
         if (!empty($options->relation)) {
             $level = count($options->relation) + 1;
-        } elseif ($options->level) {
+        } elseif (isset($options->level)) {
             $level = $options->level;
         } else {
             throw new RelationSelectorException('option level is not found');
         }
 
-        $value = [];
-        if ($dataTypeContent->exists) {
-            if (!empty($options->relation)) {
-                foreach ($options->relation as $key=>$val) {
-                    if (isset($dataTypeContent->{$val})) {
-                        $value[] = $dataTypeContent->{$val};
-                    }
-                }
-                $value[] = $dataTypeContent->{$row->field};
-            } else {
-                if (!class_exists($options->model)) {
-                    throw new RelationSelectorException(sprintf('options model : %s is not a class', $options->model));
-                }
-
-                $model = new $options->model();
-                if (!($model instanceof Model)) {
-                    throw new RelationSelectorException(sprintf('options model : %s is not instance of Illuminate\Database\Eloquent\Model', $options->model));
-                }
-
-                if (!method_exists($model, 'getParents')) {
-                    throw new RelationSelectorException(sprintf('options model : %s have not getParents method', $options->model));
-                }
-
-                $value = $model->getParents($dataTypeContent->{$row->field});
-            }
-        }
+        $value = $this->getSelectedValue($row, $dataTypeContent, $options);
 
         Toolkit::append_js(sprintf('vrs/main.js?id=%s&value=%s', $row->id, implode(',', $value)));
 
@@ -69,5 +44,67 @@ class RelationSelector extends AbstractHandler
             'dataTypeContent'   => $dataTypeContent,
             'level'             => $level,
         ]);
+    }
+
+    /**
+     * 获取选中值列表.
+     *
+     * @param $row
+     * @param $dataTypeContent
+     * @param $options
+     * @return array
+     * @throws RelationSelectorException
+     */
+    protected function getSelectedValue($row, $dataTypeContent, $options)
+    {
+        if ($dataTypeContent->exists == false) {
+            return [];
+        }
+
+        if (!empty($options->relation)) {
+            foreach ($options->relation as $key=>$val) {
+                if (!isset($dataTypeContent->{$val})) {
+                    throw new RelationSelectorException(sprintf('the field %s is not found in dataTypeContent', $val));
+                }
+                $value[] = $dataTypeContent->{$val};
+            }
+            $value[] = $dataTypeContent->{$row->field};
+
+            return $value;
+        }
+
+        if (!class_exists($options->model ?? null)) {
+            throw new RelationSelectorException(sprintf('options model : %s is not a class', $options->model ?? ''));
+        }
+
+        $model = $this->instanceModel($options->model);
+
+        $this->checkModel($model);
+
+        if (!method_exists($model, 'getParents')) {
+            throw new RelationSelectorException(
+                sprintf('options model : %s have not getParents method', $options->model));
+        }
+
+        $value = $model->getParents($dataTypeContent->{$row->field});
+
+        return $value;
+    }
+
+    protected function instanceModel($model_name)
+    {
+        return new $model_name();
+    }
+
+    protected function checkModel($model)
+    {
+        if (!($model instanceof Model)) {
+            throw new RelationSelectorException(
+                sprintf(
+                    'options model : %s is not instance of Illuminate\Database\Eloquent\Model',
+                    get_class($model)
+                )
+            );
+        }
     }
 }
