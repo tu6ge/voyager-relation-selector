@@ -16,6 +16,12 @@ php artisan hook:install voyager-relation-selector
 php artisan hook:enable voyager-relation-selector
 ```
 
+## test
+
+```
+composer test
+```
+
 ## Document
 
 安装完本插件后，在BREAD编辑页的字段的输入类型中，可以看到多了三个备选项：
