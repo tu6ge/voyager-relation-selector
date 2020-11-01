@@ -51,7 +51,7 @@ class GenerateJsControllerTest extends TestCase
      * 兼容 laravel 6.
      *
      * @param $response
-     * 
+     *
      * @return Laravel6TestResponse|TestResponse
      */
     protected function instanceTestResponse($response)
