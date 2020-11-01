@@ -14,10 +14,9 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9.4",
-        "laravel/framework": "^7",
-        "tcg/voyager": "^1.4",
-        "orchestra/testbench": "^5",
-        "orchestra/testbench-browser-kit": "^5"
+        "laravel/framework": "^6|^7|^8",
+        "tcg/voyager": "^1",
+        "orchestra/testbench": "^4|^5|^6"
     },
     "autoload": {
         "psr-4": {
@@ -56,6 +55,6 @@
     },
     "scripts": {
         "test": "phpunit",
-	"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+	    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
     }
 }
