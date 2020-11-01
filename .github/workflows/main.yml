@@ -20,7 +20,7 @@ jobs:
       fail-fast: true
       matrix:
         php: [7.3, 7.4]
-        laravel: ['6.*', '7.*', '8.*']
+        laravel: ['6.*', '7.*']
 
     name: 'PHP ${{ matrix.php }} / laravel ${{ matrix.laravel }}'
 
@@ -34,9 +34,6 @@ jobs:
           php-version: '${{ matrix.php }}'
           extensions: mbstring, pdo_sqlite, fileinfo, gd
           coverage: none
-
-      - name: composer clearcache
-        run: composer clearcache
 
       # Install PHP dependencies
       - name: Install Composer dependencies
