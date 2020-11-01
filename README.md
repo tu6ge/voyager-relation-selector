@@ -7,13 +7,13 @@ a plugin for relation selector
 ## Install hook
 
 ```bash
-php artisan hook:install voyager-relation-selector
+php artisan hook:install tu6ge/voyager-relation-selector
 ```
 
 ## Enable hook
 
 ```bash
-php artisan hook:enable voyager-relation-selector
+php artisan hook:enable tu6ge/voyager-relation-selector
 ```
 
 ## test
