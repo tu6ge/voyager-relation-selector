@@ -4,11 +4,22 @@ namespace VoyagerSelectRelation\Tests\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use VoyagerRelationSelector\Exceptions\RelationSelectorException;
 use VoyagerRelationSelector\Tests\DatabaseTestCase;
 use VoyagerRelationSelector\Traits\RelationModel;
 
 class RelationModelTest extends DatabaseTestCase
 {
+    public function testException()
+    {
+        $bar = new Foo();
+
+        $this->expectException(RelationSelectorException::class);
+        $this->expectExceptionMessage('model [VoyagerSelectRelation\Tests\Traits\Foo] is must set parentKey protected');
+
+        $bar->getParents(12);
+    }
+
     public function testGetParents()
     {
         DB::table('foo')->insert([
@@ -41,4 +52,11 @@ class FooHasParent extends Model
     protected $table = 'foo';
 
     protected $parentKey = 'test_parent_id';
+}
+
+class Foo extends Model
+{
+    use RelationModel;
+
+    protected $table = 'foo';
 }
