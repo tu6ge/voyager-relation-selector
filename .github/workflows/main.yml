@@ -50,4 +50,27 @@ jobs:
 
       # Run phpunit tests
       - name: Run tests
-        run: ./vendor/bin/phpunit
+        run: ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+       
+      - name: Install PHP Coveralls library
+        env:
+          PHP_VERSION: ${{ matrix.php }}
+        run: composer global require --dev twinh/php-coveralls
+
+      - name: Upload coverage results to Coveralls
+        env:
+          PHP_VERSION: ${{ matrix.php }}
+          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COVERALLS_PARALLEL: true
+          COVERALLS_FLAG_NAME: php-${{ matrix.php }}
+        run: php-coveralls -v
+
+  coveralls-finish:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Coveralls Finished
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.github_token }}
+          parallel-finished: true
