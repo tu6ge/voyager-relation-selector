@@ -4,6 +4,8 @@ a plugin for relation selector
 
 级联选择器插件，可用于省市区选择
 
+[![Coverage Status](https://coveralls.io/repos/github/tu6ge/voyager-relation-selector/badge.svg)](https://coveralls.io/github/tu6ge/voyager-relation-selector)
+
 ## Install hook
 
 ```bash
