@@ -2,13 +2,14 @@
 
 namespace VoyagerRelationSelector\Traits;
 
+use VoyagerRelationSelector\Exceptions\RelationSelectorException;
+
 trait RelationModel
 {
     public function getParents($id)
     {
         if (!isset($this->parentKey)) {
-            // todo update throw
-            $this->parentKey = 'parent_id';
+            throw new RelationSelectorException(sprintf('model [%s] is must set parentKey protected', __CLASS__));
         }
 
         $info = $this->find($id);
