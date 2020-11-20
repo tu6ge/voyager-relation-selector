@@ -33,7 +33,7 @@ jobs:
         with:
           php-version: '${{ matrix.php }}'
           extensions: mbstring, pdo_sqlite, fileinfo, gd, xdebug
-          coverage: none
+          coverage: xdebug
 
       # Install PHP dependencies
       - name: Install Composer dependencies
